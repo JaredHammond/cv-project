@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import General from './components/general'
+import Education from './components/education'
+import Experience from './components/experience'
+import React from 'react';
+import './style/app.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(e) {
+    const {name, value} = e.target;
+
+    this.setState({
+        [name]: value
+    });
+}
+
+  render() {
+    return(
+      <div className='app'>
+        <General change={this.handleInputChange} />
+        <Education change={this.handleInputChange} />
+        <Experience change={this.handleInputChange} />
+      </div>
+    )
+  }
 }
 
 export default App;
