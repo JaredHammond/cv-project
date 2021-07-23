@@ -1,6 +1,6 @@
-import General from './components/general'
-import Education from './components/education'
-import Experience from './components/experience'
+import General from './components/General'
+import Education from './components/Education'
+import Experience from './components/Experience'
 import React from 'react';
 import './style/app.css'
 
@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   handleInputChange(e) {
-    const {name, value} = e.target;
+    const {name, value, type} = e.target;
 
     this.setState({
         [name]: value

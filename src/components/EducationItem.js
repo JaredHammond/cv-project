@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import Input from './input';
+import Input from './Input';
 
-class Education extends Component {
+class EducationItem extends Component {
     render() {
         return (
             <form>
-                <h2>Education:</h2>
                 <Input name='school' type='text' change={this.props.change} label='University Name:' />
                 <Input name='degree' type='text' change={this.props.change} label='Degree:' />
                 <Input name='subject' type='text' change={this.props.change} label='Subject:' />
@@ -15,4 +14,4 @@ class Education extends Component {
     }
 }
 
-export default Education
+export default EducationItem
