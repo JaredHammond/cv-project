@@ -3,7 +3,7 @@ import ExperienceItem from './ExperienceItem';
 
 class Experience extends Component {
     render() {
-        const {change} = this.props.change;
+        const {change, addItem} = this.props;
 
         return(
             <div>
@@ -11,10 +11,11 @@ class Experience extends Component {
                 {this.props.list.map(
                     function(item) {
                         return (
-                            <ExperienceItem key={item.id} id={item.id} change={change} />
+                            <ExperienceItem key={item.id} itemInfo={item} change={change} />
                         )
                     }
                 )}
+                <button onClick={addItem}>Add Experience</button>
             </div>
         )
     }

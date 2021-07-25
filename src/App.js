@@ -3,38 +3,58 @@ import Education from './components/Education'
 import Experience from './components/Experience'
 import React from 'react';
 import './style/app.css'
-import {experienceListing} from './utils/main'
+import {experienceListing, educationListing, handleEduInputChange, handleExpInputChange} from './utils/main'
 
 class App extends React.Component {
   constructor() {
     super();
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.firstExperienceItem = experienceListing();
+    this.handleGeneralChange = this.handleGeneralChange.bind(this);
+    this.handleExpInputChange = handleExpInputChange.bind(this);
+    this.handleEduInputChange = handleEduInputChange.bind(this);
+    this.addEducationItem = this.addEducationItem.bind(this);
+    this.addExperienceItem = this.addExperienceItem.bind(this);
+
     this.state = {
-      experienceList: [
-        this.firstExperienceItem,
-      ]
+      general: {
+        name: '',
+        email: '',
+        phone: ''
+      },
+      experienceList: [experienceListing()],
+      educationList: [educationListing()]
     }
   }
 
-  addExperienceItem(e) {
-
-  }
-
-  handleInputChange(e) {
+  handleGeneralChange(e) {
     const {name, value} = e.target;
 
-    this.setState({
-        [name]: value
-    });
-}
+    this.setState(prevState => {
+      const updatedGen = {...prevState.general, [name]:value};
+      return {...prevState, general: updatedGen}
+    })
+  }
+
+  addEducationItem() {
+    this.setState(prevState => {
+      const updatedEduList = [...prevState.educationList, educationListing()]
+      return {...prevState, educationList: updatedEduList}
+    })
+  }
+
+  addExperienceItem() {
+    this.setState(prevState => {
+      const updatedExpList = [...prevState.experienceList, experienceListing()]
+      return {...prevState, experienceList: updatedExpList}
+    })
+  }
 
   render() {
     return(
       <div className='app'>
-        <General change={this.handleInputChange} />
-        <Experience list={this.state.experienceList} change={this.handleInputChange} />
+        <General change={this.handleGeneralChange} info={this.state.general} />
+        <Experience list={this.state.experienceList} change={this.handleExpInputChange} addItem={this.addExperienceItem} />
+        <Education list={this.state.educationList} change={this.handleEduInputChange} addItem={this.addEducationItem} />
       </div>
     )
   }
