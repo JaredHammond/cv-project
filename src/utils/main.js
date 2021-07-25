@@ -40,7 +40,7 @@ function handleExpInputChange(e, id) {
         if (expItem.id === id) {
           return {...expItem, [name]: value}
         } else {
-          return {expItem}
+          return expItem
         } 
       })
       return {...prevState, experienceList: [...updatedExp]}
@@ -48,7 +48,6 @@ function handleExpInputChange(e, id) {
 }
 
 function handleEduInputChange(e, id) {
-    console.log(e, id);
     const {name, value} = e.target;
 
     this.setState(prevState => {
@@ -56,12 +55,11 @@ function handleEduInputChange(e, id) {
         if (eduItem.id === id) {
           return {...eduItem, [name]: value}
         }
-        return {eduItem}
+        return eduItem
  
       })
       return {...prevState, educationList: [...updatedEdu]}
     })
-    console.log(this.state);
 }
 
 export {experienceListing, educationListing, handleEduInputChange, handleExpInputChange};
