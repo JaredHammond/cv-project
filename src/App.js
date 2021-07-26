@@ -75,7 +75,7 @@ class App extends React.Component {
         <General change={this.handleGeneralChange} info={this.state.general} />
         <Experience list={this.state.experienceList} change={this.handleExpInputChange} removeItem={this.removeExperienceItem} addItem={this.addExperienceItem} />
         <Education list={this.state.educationList} change={this.handleEduInputChange} removeItem={this.removeEducationItem} addItem={this.addEducationItem} />
-        <Preview general={this.state.general} />
+        <Preview info={this.state} />
       </div>
     )
   }
