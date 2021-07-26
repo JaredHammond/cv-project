@@ -3,7 +3,7 @@ import ExperienceItem from './ExperienceItem';
 
 class Experience extends Component {
     render() {
-        const {change, addItem} = this.props;
+        const {change, addItem, removeItem} = this.props;
 
         return(
             <div>
@@ -16,6 +16,7 @@ class Experience extends Component {
                     }
                 )}
                 <button onClick={addItem}>Add Experience</button>
+                <button onClick={removeItem}>Remove Experience</button>
             </div>
         )
     }

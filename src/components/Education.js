@@ -3,7 +3,7 @@ import EducationItem from './EducationItem';
 
 class Education extends Component {
     render() {
-        const {change, addItem} = this.props;
+        const {change, addItem, removeItem} = this.props;
 
         return(
             <div>
@@ -16,6 +16,7 @@ class Education extends Component {
                     }
                 )}
                 <button onClick={addItem}>Add Education</button>
+                <button onClick={removeItem}>Remove Education</button>
             </div>
         )
     }

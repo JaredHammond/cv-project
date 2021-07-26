@@ -14,6 +14,8 @@ class App extends React.Component {
     this.handleEduInputChange = handleEduInputChange.bind(this);
     this.addEducationItem = this.addEducationItem.bind(this);
     this.addExperienceItem = this.addExperienceItem.bind(this);
+    this.removeEducationItem = this.removeEducationItem.bind(this);
+    this.removeExperienceItem = this.removeExperienceItem.bind(this);
 
     this.state = {
       general: {
@@ -42,6 +44,14 @@ class App extends React.Component {
     })
   }
 
+  removeEducationItem() {
+    this.setState(prevState => {
+      const prevLength = prevState.educationList.length;
+      const updatedEdulist = prevState.educationList.slice(0, prevLength - 1)
+      return {...prevState, educationList: updatedEdulist}
+    })
+  }
+
   addExperienceItem() {
     this.setState(prevState => {
       const updatedExpList = [...prevState.experienceList, experienceListing()]
@@ -49,12 +59,20 @@ class App extends React.Component {
     })
   }
 
+  removeExperienceItem() {
+    this.setState(prevState => {
+      const prevLength = prevState.experienceList.length;
+      const updatedExplist = prevState.experienceList.slice(0, prevLength - 1)
+      return {...prevState, experienceList: updatedExplist}
+    })
+  }
+
   render() {
     return(
       <div className='app'>
         <General change={this.handleGeneralChange} info={this.state.general} />
-        <Experience list={this.state.experienceList} change={this.handleExpInputChange} addItem={this.addExperienceItem} />
-        <Education list={this.state.educationList} change={this.handleEduInputChange} addItem={this.addEducationItem} />
+        <Experience list={this.state.experienceList} change={this.handleExpInputChange} removeItem={this.removeExperienceItem} addItem={this.addExperienceItem} />
+        <Education list={this.state.educationList} change={this.handleEduInputChange} removeItem={this.removeEducationItem} addItem={this.addEducationItem} />
       </div>
     )
   }
