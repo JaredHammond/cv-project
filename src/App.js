@@ -1,6 +1,7 @@
-import General from './components/General'
-import Education from './components/Education'
-import Experience from './components/Experience'
+import General from './components/inputForm/General'
+import Education from './components/inputForm/Education'
+import Experience from './components/inputForm/Experience'
+import Preview from './components/preview/Preview'
 import React from 'react';
 import './style/app.css'
 import {experienceListing, educationListing, handleEduInputChange, handleExpInputChange} from './utils/main'
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.removeExperienceItem = this.removeExperienceItem.bind(this);
 
     this.state = {
+      preview: false,
       general: {
         name: '',
         email: '',
@@ -73,6 +75,7 @@ class App extends React.Component {
         <General change={this.handleGeneralChange} info={this.state.general} />
         <Experience list={this.state.experienceList} change={this.handleExpInputChange} removeItem={this.removeExperienceItem} addItem={this.addExperienceItem} />
         <Education list={this.state.educationList} change={this.handleEduInputChange} removeItem={this.removeEducationItem} addItem={this.addEducationItem} />
+        <Preview general={this.state.general} />
       </div>
     )
   }
